@@ -5,23 +5,26 @@ using UnityEngine;
 public class PolySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _polygonTargets = new GameObject[5];
-    private Vector3 _position = new Vector3(3f, 8f, 0f);
+    private Vector3 _position = new Vector3(-2f, 4f, 0f);
 
-    // Start is called before the first frame update
+
     void Awake()
     {
-        foreach (var polygon in _polygonTargets)
+        Debug.Log(BallSpawner.Instance);
+        for (int i = 0; i < _polygonTargets.Length; i++)
         {
-            polygon.transform.position = _position;
-            Instantiate(polygon);
-            _position += new Vector3(0f, -1f, 0f);
-
-            foreach (var _polygon in _polygonTargets)
+            for (int j = 0; j < _polygonTargets.Length; j++)
             {
-                _polygon.transform.position = _position;
+                var randomLine = UnityEngine.Random.Range(0, 5);
+                _polygonTargets[randomLine].transform.position = _position;
                 _position += new Vector3(1f, 0f, 0f);
-                Instantiate(_polygon);
+                Instantiate(_polygonTargets[randomLine]);
             }
+
+            var randomRow = UnityEngine.Random.Range(0, 5);
+            _polygonTargets[randomRow].transform.position = _position;
+            _position += new Vector3(-5f, -1f, 0f);
+            Instantiate(_polygonTargets[randomRow]);
         }
     }
 }
