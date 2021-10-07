@@ -8,7 +8,7 @@ public class UIStartMenuButton : MonoBehaviour
 {
     [SerializeField] string _levelName;
 
-    public string LevelName => _levelName;
+    public string LevelName => _levelName; 
 
     public void LoadLevel()
     {

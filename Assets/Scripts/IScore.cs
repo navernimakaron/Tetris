@@ -1,6 +1,5 @@
-﻿interface IScore 
+﻿interface IScore
 {
-    int score { get; set; }
-    int Score();
-
+    int Score { get; set; }
+   
 }
